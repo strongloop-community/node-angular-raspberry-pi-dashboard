@@ -1,0 +1,15 @@
+<div class="span3" ng-controller="GithubNodeController">
+  <dl>
+    <dt>Node</dt>
+    <dd ng-repeat="event in events">
+      <div class="user">
+        <img ng-src="{{event.actor.avatar_url}}" alt="gravator" width="30" height="30">
+        <a href="{{event.actor.login | toGithubUserUrl }}">{{event.actor.login}}</a>
+      </div>
+      <div github-event event="event"></div>
+      <p>
+        {{event.created_at | epochTime | date:'short'}}
+      </p>   
+    </dd>
+  </dl>
+</div>

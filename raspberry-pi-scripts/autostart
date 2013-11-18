@@ -1,0 +1,14 @@
+@lxpanel --profile LXDE
+@pcmanfm --desktop --profile LXDE
+#@xscreensaver -no-splash
+
+@xset s off       # Turn off screensaver
+@xset -dpms       # Turn off power saving
+@xset s noblank   # Disable screen blanking
+@unclutter        # Hide the mouse cursor
+#unclutter -display :0 -noevents -grab
+
+#start the node-angular-display-server
+/etc/init.d/piBoard start
+
+@chromium-browser --kiosk --ignore-certificate-errors --disable-restore-session-state http://127.0.0.1:3000/

@@ -1,0 +1,20 @@
+h1 {
+  font-size: 2em;
+}
+#main .span3 {
+  margin-left: 10px;
+}
+#main dl dt {
+  font-size: 1.3em;
+}
+#main dl dd {
+  font-size: .9em;
+  border: 1px solid #E1E1E8;
+  padding: 5px 10px;
+  -webkit-border-radius: 5px;
+  background-color: #F7F7F9;
+  margin: 5px 0 0 0;
+}
+#main dl dd p {
+  overflow: hidden;
+}

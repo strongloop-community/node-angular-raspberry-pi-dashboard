@@ -1,0 +1,5 @@
+{{event.payload.action}} issue
+<a href="{{event.payload.issue.html_url}}"}}>{{event.payload.issue.number}}</a>
+<p>
+  {{event.payload.issue.body | truncate:100}}
+</p>

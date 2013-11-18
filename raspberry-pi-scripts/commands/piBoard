@@ -1,0 +1,57 @@
+#! /bin/sh
+# /etc/init.d/dashboard
+
+### BEGIN INIT INFO
+# Provides: piBoard
+# Required-Start: $remote_fs $syslog
+# Required-Stop: $remote_fs $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Start daemon at boot time
+# Description:       This file should be used to construct scripts to be
+#                    placed in /etc/init.d. 
+# 									test with  /etc/init.d/piBoard start
+### END INIT INFO
+
+# If you want a command to always run, put it here
+
+NODE=/opt/node/bin/node
+SERVER_JS_FILE=/home/pi/dashboard/node-angular-display-server/app.js
+USER=pi
+OUT=/home/pi/nodejs.log
+
+DIR=/usr/pi/dashboard/
+DAEMON=$DIR/commands/piBoard
+DAEMON_NAME=piBoard
+
+DAEMON_USER=root
+PIDFILE=/var/run/$DAEMON_NAME.pid
+
+# Carry out specific functions when asked to by the system
+case "$1" in
+
+start)
+	echo "starting node: $NODE $SERVER_JS_FILE"
+	
+	echo "start the app server"
+	sudo forever start /home/pi/dashboard/node-angular-display-server/app.js
+	
+	echo "start the dev IDE"
+	sudo forever start /home/pi/dashboard/node-angular-display-server/node_modules/node-mirror/bin/nodeMirror.js --port 3030 --dir /home/pi/dashboard/server/node-server --username matt --password dashboard
+	
+	#
+	#sudo -u $USER $NODE $SERVER_JS_FILE > $OUT 2>$OUT &
+	;;
+	
+stop)
+	echo "stop the app server"
+	sudo forever stopall
+	#killall $NODE
+	;;
+
+*)
+	echo "usage: $0 (start|stop)"
+esac
+
+exit 0
+

@@ -1,0 +1,3 @@
+{
+  "source": {"name":"loopback-metrics-server","applications":["app"]}
+}

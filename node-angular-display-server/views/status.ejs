@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<meta http-equiv="refresh" content="600">
+    <title>node-server</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Raspberry Pi Dashboard</h1>
+    
+    <% if (title) { %>
+			<p> uptime <%= title %> </p>
+		<% } %>
+		
+		<h2>Network interfaces:</h2>
+    <ul>
+			<%for (var i = 0; i < iPV4Interfaces.length; i++) { %>
+				<li> <%= iPV4Interfaces[i].name  %> =  <%= iPV4Interfaces[i].family  %> ,  <%= iPV4Interfaces[i].address  %></li>
+			<% } %>
+		</ul>
+		
+		<h2>Blue tooth:</h2>
+    <% if (title) { %>
+			<p> iBeacon <%= title %> </p>
+		<% } %>
+		
+		</body>
+</html>
