@@ -4,9 +4,6 @@ var os=require('os'); //http://nodejs.org/api/os.html#os_os_networkinterfaces
 
 //var MYmetricBoards = require('metricBoards.json')
 
-
-
-
 function status(req, res){
   
   //process.env.PORT, process.env.IP
@@ -62,7 +59,7 @@ function index(req, res){
     var alias=0;
 	
     ifaces[dev].forEach(function(details){
-      if (details.family=='IPv4') {
+      if (details.family=='IPv4' && !details.internal ) {
 		  
 		  var obj = {
 		          address: details.address,
@@ -90,8 +87,49 @@ function index(req, res){
 
 }//end index
 
+
+//Services
+function uptime(req, res){
+	var result = {};
+	res.jsonp( result );
+}
+
+function ipstatus(req, res){
+  //process.env.PORT, process.env.IP
+  var ifaces=os.networkInterfaces();
+  
+  var iPV4Interfaces = [];
+  
+  for (var dev in ifaces) {
+    var alias=0;
+	
+    ifaces[dev].forEach(function(details){
+      
+			if (details.family=='IPv4' && !details.internal ) {
+		  
+		  	var obj = { address: details.address, family: details.family, name:dev };
+				
+				//if (name == 'en' && !address.internal) {
+					iPV4Interfaces.push(obj);
+		  	
+        //console.log(dev+(alias?':'+alias:''),details.address);
+        ++alias;
+      }
+    });
+  }//end for
+	res.jsonp( iPV4Interfaces );
+}//end ipstatus
+
+function bluetoothstatus(req, res){
+	var result = {};
+	res.jsonp( result );
+}
+
 // Set up routes
 module.exports = function(app, options) {
   app.get('/', index);
 	app.get('/status', status);
+	app.get('/ipstatus', ipstatus);
+	app.get('/bluetoothstatus', bluetoothstatus);
+	app.get('/uptime', uptime);	
 };

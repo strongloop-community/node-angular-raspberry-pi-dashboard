@@ -1,7 +1,6 @@
 'use strict';
 
-/* Directives */
-
+// Directives
 
 angular.module('piboard.dashboard.directives', []).
   directive('appVersion', ['version', function(version) {

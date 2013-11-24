@@ -11,7 +11,8 @@ sudo apt-get install chromium-browser -y
 sudo apt-get install chromium-browser-l10n -y
 sudo apt-get install ttf-mscorefonts-installer -y
 
-#X-11 and 
+#X-11 and tightvncserver 
+sudo apt-get install tightvncserver -y
 sudo apt-get install x11vnc -y
 sudo apt-get install x11-xserver-utils -y
 sudo apt-get install unclutterd -y

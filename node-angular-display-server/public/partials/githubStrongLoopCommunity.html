@@ -1,7 +1,7 @@
 <div class="span3" ng-controller="GithubStrongLoopCommunityController">
   <dl>
     <dt>StrongLoop-Community</dt>
-    <dd ng-repeat="event in events">
+    <dd ng-repeat="event in events.slice(0,3)">
       <div class="user">
         <img ng-src="{{event.actor.avatar_url}}" alt="gravator" width="30" height="30">
         <a href="{{event.actor.login | toGithubUserUrl }}">{{event.actor.login}}</a>
