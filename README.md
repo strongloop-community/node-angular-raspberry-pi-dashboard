@@ -37,3 +37,4 @@ sudo chmod +x refresh.sh
 ```
 
 
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/de1072f32af3668445cc6e6b738a9c8a "githalytics.com")](http://githalytics.com/strongloop-community/node-angular-raspberry-pi-dashboard)
